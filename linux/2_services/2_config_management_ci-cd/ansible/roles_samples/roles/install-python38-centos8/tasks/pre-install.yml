@@ -1,0 +1,17 @@
+---
+- name: install the 'Development tools' package group
+  dnf:
+    name: '@Development tools'
+    state: present
+
+- name: ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - gcc
+    - openssl-devel
+    - bzip2-devel
+    - libffi-devel
+  become: yes
+

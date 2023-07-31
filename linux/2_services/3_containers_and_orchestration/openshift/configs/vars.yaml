@@ -1,0 +1,42 @@
+---
+disk: sda
+helper:
+  name: "v00opshift08tst"
+  ipaddr: "10.8.37.46"
+dns:
+  domain: "corp.domain.ru"
+  clusterid: "ocp4"
+  forwarder1: "10.8.13.11"
+  forwarder2: "10.8.13.12"
+dhcp:
+  router: "10.8.36.1"
+  bcast: "10.8.37.255"
+  netmask: "255.255.254.0"
+  poolstart: "10.8.36.1"
+  poolend: "10.8.37.254"
+  ipid: "10.8.36.0"
+  netmaskid: "255.255.254.0"
+bootstrap:
+  name: "v00opshift01tst-bootstrap"
+  ipaddr: "10.8.37.14"
+  macaddr: "00:50:56:a0:4e:66"
+masters:
+  - name: "v00opshift02tst-master0"
+    ipaddr: "10.8.37.113"
+    macaddr: "00:50:56:a0:54:59"
+  - name: "v00opshift03tst-master1"
+    ipaddr: "10.8.37.97"
+    macaddr: "00:50:56:a0:1a:41"
+  - name: "v00opshift04tst-master2"
+    ipaddr: "10.8.37.233"
+    macaddr: "00:50:56:a0:4c:3c"
+workers:
+  - name: "v00opshift05tst-worker0"
+    ipaddr: "10.8.37.26"
+    macaddr: "00:50:56:a0:9c:3a"
+  - name: "v00opshift06tst-worker1"
+    ipaddr: "10.8.37.29"
+    macaddr: "00:50:56:a0:b1:1f"
+  - name: "v00opshift06tst-worker2"
+    ipaddr: "10.8.37.114"
+    macaddr: "00:50:56:a0:c8:c1"

@@ -1,0 +1,28 @@
+# Repository: https://rpms.remirepo.net/
+# Blog:       https://blog.remirepo.net/
+# Forum:      https://forum.remirepo.net/
+
+[remi]
+name=Remi's RPM repository for Enterprise Linux 8 - $basearch
+baseurl=https://repo.corp.domain.ru/repository/remirepo/enterprise/8/remi/$basearch/
+enabled=0
+gpgcheck=0
+
+[remi-test]
+name=Remi's test RPM repository for Enterprise Linux 8 - $basearch
+baseurl=https://repo.corp.domain.ru/repository/remirepo/enterprise/8/test/$basearch/
+# WARNING: If you enable this repository, you must also enable "remi"
+enabled=0
+gpgcheck=0
+
+[remi-debuginfo]
+name=Remi's RPM repository for Enterprise Linux 8 - $basearch - debuginfo
+baseurl=https://repo.corp.domain.ru/repository/remirepo/enterprise/8/debug-remi/$basearch/
+enabled=0
+gpgcheck=0
+
+[remi-test-debuginfo]
+name=Remi's test RPM repository for Enterprise Linux 8 - $basearch - debuginfo
+baseurl=https://repo.corp.domain.ru/repository/remirepo/enterprise/8/debug-test/$basearch/
+enabled=0
+gpgcheck=0

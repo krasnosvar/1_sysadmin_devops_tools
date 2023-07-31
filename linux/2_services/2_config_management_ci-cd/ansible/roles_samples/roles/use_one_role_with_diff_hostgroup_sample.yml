@@ -1,0 +1,29 @@
+---
+- hosts: all
+  vars:
+    sudoers_file_path: /etc/sudoers.d/ansible_add_sudoers
+    vastool_sudoers_path: /etc/opt/quest/vas/users.allow
+  roles:
+    - role: users_to_services
+      vars:
+        groups_to_add: 
+        - 'kb_dev_promo'
+      when: inventory_hostname in groups['kb_dev_promo_group']
+
+    - role: users_to_services
+      vars:
+        groups_to_add: 
+        - 'kb_dev_co'
+      when: inventory_hostname in groups['kb_dev_co_group']
+
+    - role: users_to_services
+      vars:
+        groups_to_add: 
+        - 'kb_dev_suag'
+      when: inventory_hostname in groups['kb_dev_suag_group']
+
+    - role: users_only_read_logs
+      vars:
+        groups_to_add: 
+        - 'kb_dev_logs'
+      when: inventory_hostname in groups['kb_dev_logs_group']

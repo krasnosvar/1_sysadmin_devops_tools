@@ -1,0 +1,15 @@
+filebeat.inputs:
+- type: log
+  paths:
+{% for log_list in logs_path %}
+    - {{ log_list }}
+{% endfor %}
+    
+  exclude_files: [".gz$"]
+  ignore_older: 72h
+output:
+  logstash:
+    hosts: ["10.5.47.217:{{ server_port }}"] #порт уточняется после заявки на создание ОСЛ
+    ssl.certificate_authorities: ["/etc/filebeat/{{ cert_name }}"] #сертификат выдается после заявки на создание ОСЛ
+logging.metrics.enabled: false
+

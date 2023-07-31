@@ -1,0 +1,42 @@
+---
+- name: "Get current python3 version"
+  shell: /usr/local/bin/python3 --version |sed 's/^Python //'
+  register: python_version_current
+  changed_when: 'python_version_current.stdout != python_version_default'
+  check_mode: no
+
+- block:
+  - name: "Copy archive python {{ python_version_default }} source code"
+    copy:
+      src: files/Python-{{ python_version_default }}.tgz
+      dest: /usr/src/Python-{{ python_version_default }}.tgz
+      mode: '0644'
+    become: yes
+
+  - name: "Unpack python {{ python_version_default }} source code"
+    unarchive:
+      src: /usr/src/Python-{{ python_version_default }}.tgz
+      dest: /usr/src/
+      remote_src: yes
+    become: yes
+
+  - name: "Run 'configure' target as root"
+    command: chdir=/usr/src/Python-{{ python_version_default }} ./configure --enable-optimizations
+    become: yes
+    tags: skip_ansible_lint
+
+  - name: "Run 'make install' target as root"
+    make:
+      chdir: /usr/src/Python-{{ python_version_default }}
+      target: install
+      file: /usr/src/Python-{{ python_version_default }}/Makefile
+    notify: python installed
+    become: yes
+    tags: skip_ansible_lint
+
+  - name: "Remove python source code archive"
+    file:
+      path: /usr/src/Python-{{ python_version_default }}.tgz
+      state: absent
+    become: yes
+  when: 'python_version_current.stdout != python_version_default'

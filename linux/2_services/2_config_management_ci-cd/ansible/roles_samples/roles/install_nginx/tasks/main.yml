@@ -1,0 +1,15 @@
+---
+# tasks file for sample_role
+- name: Copy Nginx REPO file 
+  template:
+    src: templates/nginx.repo.j2
+    dest: /etc/yum.repos.d/nginx.repo
+
+- name: Clean metadata in yum
+  shell: 'yum clean all'
+
+- name: Install nginx
+  yum:
+    name: 'nginx'
+    state: present
+

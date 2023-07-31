@@ -1,0 +1,57 @@
+#ansible-playbook playbooks/filebeat.yml -i hosts -u local -b --extra-vars="ansible_ssh_pass=$LOCAL_PASS ansible_become_pass=$LOCAL_PASS"
+---
+- name: Script for install and config filebeat-client_7.2.1.
+  hosts: all
+  #vars_files:
+  #  - /usr/git/ansible_no_git/entrance-vars.yml
+  vars: 
+    - main_dir: /builds/unix_adm/filebeat_client_conf
+    
+    - cert_name: fito_logs.crt
+    - logs_path:
+        - /var/log/haproxy
+        - /var/log/test
+
+    - server_port: 5175
+
+
+  tasks:
+    - name: Clean metadata in yum
+      shell: 'yum clean all'
+      tags: update
+
+    - name: "Transfer rpm/filebeat-7.2.1-x86_64.rpm"
+      copy:
+        src: "{{main_dir}}/rpm/filebeat-7.2.1-x86_64.rpm"
+        dest: /home/local/
+      register: copied
+
+    - name: "Install RPM rpm/filebeat-7.2.1-x86_64.rpm from local copy"
+      yum:
+        name: /home/local/filebeat-7.2.1-x86_64.rpm 
+
+    - name: "Copy cert {{ cert_name }}"
+      copy:
+        src: "{{main_dir}}/certs/{{ cert_name }}"
+        dest: /etc/filebeat/
+
+    - name: Copy config to server-group-1 (carefully with vars!)
+      delegate_to: "{{item}}"
+      loop: "{{groups['group1']}}" 
+      template: 
+        src: "{{main_dir}}/config_sample/filebeat.yml.j2"
+        dest: /etc/filebeat/filebeat.yml
+
+    - name: Restart filebeat after config update
+      service:
+        name: filebeat
+        state: restarted
+
+    - name: Do command 
+      shell: 'filebeat test config && filebeat test output'
+      ignore_errors: True
+      register: out
+
+    - debug: var=out.stdout_lines
+    - debug: var=out.stderr_lines
+ 

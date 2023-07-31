@@ -1,0 +1,61 @@
+---
+    - hosts: all
+      become: true
+      vars:
+        sudoers_file_path: /etc/sudoers.d/ansible_add_sudoers
+        vastool_sudoers_path: /etc/opt/quest/vas/users.allow
+        users_to_add:
+          - "toor"
+        groups_to_add:
+
+      gather_facts: False
+    
+      tasks:
+      - name: Check if {{ sudoers_file_path }} contains {{ users_to_add }}
+        lineinfile:
+          path: "{{ sudoers_file_path }}"
+          regexp: '^{{ item }}'
+          line: '{{ item }} ALL=(ALL) ALL'
+          state: absent
+        loop: "{{ users_to_add }}"
+        check_mode: yes
+        changed_when: false
+        register: out2
+  
+      - name: Add a user to sudoers new file
+        lineinfile:
+                 #inserbefore: "# VGP (vgp_sudoext) Sudoers Section Start ( DO NOT EDIT! )"
+          path: /etc/sudoers.d/ansible_add_sudoers
+          line: "{{ item }} ALL=(ALL) ALL"
+          create: yes
+        loop: "{{ users_to_add }}"
+        when: out2.changed == false
+
+      - name: Check if {{ sudoers_file_path }} contains {{ groups_to_add }}
+        lineinfile:
+          path: "{{ sudoers_file_path }}"
+          regexp: '^{{ item }}'
+          line: '{{ item }} ALL=(ALL) ALL'
+          state: absent
+        loop: "{{ groups_to_add }}"
+        check_mode: yes
+        changed_when: false
+        register: out4
+  
+      - name: Add a group to sudoers new file
+        lineinfile:
+                 #inserbefore: "# VGP (vgp_sudoext) Sudoers Section Start ( DO NOT EDIT! )"
+          path: /etc/sudoers.d/ansible_add_sudoers
+          line: "%{{ item }} ALL=(ALL) ALL"
+          create: yes
+        loop: "{{ groups_to_add }}"
+        when: out4.changed == false
+
+      #https://gist.github.com/njh/79e2962f2d3bf882acf96f0ea94e43c0           
+      - name: disable requiretty in sudo, so that syncronise works
+        lineinfile:
+          dest: /etc/sudoers
+          regexp: '^(Defaults\s+requiretty)$'
+          line: '# \1'
+          backrefs: yes
+
