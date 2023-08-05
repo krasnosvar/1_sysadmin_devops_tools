@@ -75,6 +75,17 @@ brew install openfortivpn
 # brew install sshpass
 brew install esolitos/ipa/sshpass
 brew install --cask remote-desktop-manager-free
+#freerdp tools
+# example command with gateway
+# xfreerdp \
+# /u:kras /p:$PASS /v:vm-hostname.example.com \
+# /g:gw-hostname /gd:ad.domain /gu:kras /gp:$PASS
+brew install freerdp
+brew install --cask xquartz
+brew install quartz-wm
+
+
+
 
 #devops-tools
 brew install ansible
