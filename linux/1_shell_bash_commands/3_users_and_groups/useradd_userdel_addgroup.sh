@@ -37,7 +37,12 @@ sudo addgroup usergr
 #add group in "hand mode"
 sudo vigr
 
+#create grooup with specific id
+groupadd -g 100 users
+
 #usermod
+#assign to user specific UID
+usermod -u 2005 foo
 #add user to group
 sudo usermod -aG docker ${USER}
 sudo usermod -aG admin den

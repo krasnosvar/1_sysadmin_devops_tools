@@ -1,6 +1,6 @@
 ###ZIP
 #unzip file to specific folder(/etc/ansible/roles)
-unzip /home/krasnosvarov_dn/ansible-haproxy-master.zip -d /etc/ansible/roles/
+unzip /home/den/ansible-haproxy-master.zip -d /etc/ansible/roles/
 #create zip-archive with password
 zip -e ~/Downloads/manag.zip ~/Downloads/manag-adm.txt
   Enter password: 
@@ -31,21 +31,24 @@ sudo apt install p7zip-full -y
 ###TAR
 #create tar
 tar -cvf archive.tar file-to-be-archive
+#create tar.gz from specific dir ( /var/log) and put in in specific dir (/backup)
+tar cvzf /backup/log.tar.gz /var/log
+#create tar.gz from specific dir with timestamp (make backup)
+tar -cvzf $(hostname)-$(date -I).tar.gz /etc/sysconfig/app.env /etc/systemd/system/app.service /opt/app
+#create tar.gz from specific dir with timestamp and exlude some dirs
+tar -cvzf $(hostname)-$(date -I).tar.gz /var/www/html/site.domain.ru/ --exclude /var/www/html/site.domain.ru/static/reports --exclude /var/www/html/site.domain.ru/oradiag_ap_graphic
 #extract tar
 tar -xvf archive.tar
 #extract *.tar.gz or *.tgz TGZ file
 tar -xvzf archive.tar.gz
 tar -xvzf metallb-4.5.7.tgz
-#add file to archive
+#add file to non compressed archive
 tar -rvf archive.tar file-to-add
 #list files in archive
 tar -tvf archive.tar
-#untar in specific folder /home/krasnosvarov_dn/tst2/ 
-tar -C /home/krasnosvarov_dn/tst2/ -xvf /home/krasnosvarov_dn/tst/whs-gw-uzdo.zip --strip-components 1
-#make backup
-tar -cvzf $(hostname)-$(date -I).tar.gz /etc/sysconfig/whs-gw-uzdo.env /etc/systemd/system/whs-gw-uzdo.service /opt/whs-gw-uzdo
-#or
-tar -cvzf $(hostname)-$(date -I).tar.gz /var/www/html/graphic-prod.domain.ru/ --exclude /var/www/html/graphic-prod.domain.ru/static/reports --exclude /var/www/html/graphic-prod.domain.ru/oradiag_ap_graphic
+#untar in specific folder /home/den/tst2/ 
+tar -C /home/den/tst2/ -xvf /home/den/tst/app.zip --strip-components 1
+
 #TBZ
 #extract TBZ
 tar -xjf test.tbz
