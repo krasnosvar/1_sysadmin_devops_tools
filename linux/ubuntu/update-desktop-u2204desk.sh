@@ -46,6 +46,15 @@ sudo apt install flameshot -y
 sudo apt install diodon -y #instead of copyq
 #iPhone HEIC lib
 sudo apt install heif-gdk-pixbuf -y
+# disk utils
+# sudo smartctl --xall /dev/nvme0
+# sudo nvme smart-log /dev/nvme0
+sudo apt install smartmontools nvme-cli  -y
+
+#*.msg converter ( read outlook files from thunderbird)
+# https://www.matijs.net/software/msgconv/
+# msgconvert YourMessage.msg
+sudo apt-get install libemail-outlook-message-perl -y
 
 # Browsers
 #vivaldi
