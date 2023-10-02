@@ -283,7 +283,7 @@ chown -R den: /home/den
 # apt-get install seamonkey-mozilla-build
 
 
-sudo apt autoremove
+sudo apt autoremove -y
 
 
 

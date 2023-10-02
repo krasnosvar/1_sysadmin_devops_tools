@@ -24,7 +24,7 @@ sudo apt install p7zip-full -y
 7z x unix_admin.7z -p7928
 #pack
 7z a secure.7z * -pSECRET
-#If the password contains spaces or special characters, then enclose it with single quotes
+#If the password contains spaces or special characters, then enclose it with quotes
 7z a secure.7z * -p"pa$$word @|"
 
 

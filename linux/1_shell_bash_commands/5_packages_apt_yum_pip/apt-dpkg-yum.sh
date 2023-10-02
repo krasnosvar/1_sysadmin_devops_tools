@@ -8,6 +8,8 @@ apt list --installed
 apt list --installed | grep wine
 #list installed kernels
 apt list --installed | egrep -i --color 'linux-image|linux-headers'
+#upgrade only one package
+apt-get --only-upgrade install tomcat9
 #Create a List of all Installed Packages
 sudo dpkg-query -f '${binary:Package}\n' -W > packages_list.txt
 #Now that you have the list, you can install the same packages on your new server with:
