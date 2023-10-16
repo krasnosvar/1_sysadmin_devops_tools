@@ -97,15 +97,18 @@ brew install podman
 brew install --cask podman-desktop
 brew install --cask rancher
 brew install kubectl
-brew install openjdk
 brew install helm
 brew install sops age
 #psql without postgres db
 brew install libpq
 echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc
+
+
+#programming
+brew install openjdk
+brew install golang
 brew install pip3
 
 #for VMs
-brew install golang
 brew install qemu gcc libvirt
 brew install virt-manager

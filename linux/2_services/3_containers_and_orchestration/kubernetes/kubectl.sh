@@ -39,6 +39,10 @@ https://www.redhat.com/sysadmin/troubleshooting-terminating-namespaces
 https://stackoverflow.com/questions/52369247/namespace-stuck-as-terminating-how-i-removed-it
 
 #PODs
+#check on what node is my pod in namespace default
+kubectl get pods -o wide -n default
+#same for all pods
+kubectl get pods -o wide --all-namespaces
 #bash into pod
 kubectl exec -it podname -- /bin/bash
 # delete pods forcefully

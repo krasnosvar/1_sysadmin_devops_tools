@@ -15,7 +15,9 @@ zip -s 0 split.zip --out unsplit.zip
 unzip unsplit.zip
 #unzip file from URL
 file=consul_1.8.3_linux_amd64.zip;  curl -O https://releases.hashicorp.com/consul/1.8.3/$file && unzip $file && rm -rf $file
-
+# unzip рassword-protected archive without knowing the password
+apt install fcrackzip
+fcrackzip -u -b -v file.zip
 
 #7z
 #install in Ubuntu
