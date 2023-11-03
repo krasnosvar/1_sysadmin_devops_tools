@@ -18,6 +18,7 @@ https://tproger.ru/translations/most-common-git-screwupsquestions-and-solutions/
 .gitignore
 
 
+#GUT CONFIG
 #global config
 git config --global user.name "krasnosvar"
 git config --global user.email "krasnosvar@gmail.com"
@@ -33,11 +34,9 @@ git config user.email "krasnosvar@gmail.com"
 #add remotes
 git remote add github git@github.com:krasnosvar/git.git
 git remote add bitbucket git@bitbucket.org:krasnosvar/git.git
-
 #GIT_WITH_PROXY
 git config --global http.proxy http://username:password@proxy.example.com:8080
 git config --global https.proxy http://username:password@proxy.example.com:8080
-
 #PROXY
 #https://stackoverflow.com/questions/24907140/git-returns-http-error-407-from-proxy-after-connect
 git config --global http.sslVerify false
@@ -49,6 +48,9 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 #
 git config --global http.proxyAuthMethod 'basic'
+#use non-default ssh-key in repo
+cd git_repo
+git config core.sshCommand "ssh -i ~/.ssh/id_rsa_leg5"
 
 
 #add to one remote several git-repos

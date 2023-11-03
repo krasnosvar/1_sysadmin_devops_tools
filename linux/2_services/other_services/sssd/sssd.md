@@ -9,7 +9,7 @@
 1. Установить пакеты
 ```
 yum install realmd sssd oddjob oddjob-mkhomedir adcli samba-common samba-common-tools
-realm join -U svc_join v00adtest1.domain.ru
+realm join -U svc_join adtest.domain.ru
 ```
 
 
@@ -29,7 +29,7 @@ config_file_version = 2
 services = nss, pam
 
 [domain/corp.domain.ru]
-ad_server = v00adtest1.domain.ru
+ad_server = adtest.domain.ru
 ad_domain = domain.ru
 krb5_realm = DOMAIN.RU
 realmd_tags = manages-system joined-with-adcli 
