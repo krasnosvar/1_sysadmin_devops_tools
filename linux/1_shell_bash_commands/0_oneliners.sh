@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------
 #most used oneliners
-#update ubuntu
-sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo snap refresh
+#update ubuntu apps ( apt and snap, and remove older versions of snaps)
+sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo snap refresh \
+&& snap list --all | awk '/disabled/{print $1, $3}' | while read name rev; do sudo snap remove "$name" --revision="$rev"; done
 
 #git
 git add . && git commit -m "add ldapsearch info" && git push

@@ -65,3 +65,18 @@ sudo fdisk -l | grep '^Disk /dev/sd[a-z]'
 
 #if rm -rf /var/log/app/*.gz - ERROR bash: /bin/rm: Argument list too long:
 find /var/log/app/ -name '*.gz' -type f -delete
+
+
+#find all hard links by inode num
+ls -lahi dir_1                   
+total 24K
+15614443 drwxrwxr-x 2 user user 4,0K ноя 18 22:03 .
+15614436 drwxrwxr-x 4 user user 4,0K ноя 18 22:02 ..
+15614445 -rw-rw-r-- 1 user user    2 ноя 18 22:02 file_1
+15614446 -rw-rw-r-- 1 user user    2 ноя 18 22:02 file_2
+15614447 -rw-rw-r-- 2 user user    2 ноя 18 22:02 file_3 # this file has two hard links ( 3rd column)
+15614448 -rw-rw-r-- 1 user user    2 ноя 18 22:03 file_4
+# find by known inode num
+find / -inum 15614447 2>/dev/null
+/home/user/test/dir_1/file_3
+/home/user/test/dir_2/file_5

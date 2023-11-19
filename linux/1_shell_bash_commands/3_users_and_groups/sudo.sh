@@ -1,5 +1,18 @@
+# what is sudo
+# https://www.liquidweb.com/kb/how-to-set-up-and-manage-sudo-permissions/
+# Sudo is a Linux program meant to allow a user to use root privileges for a limited timeframe to users and log root activity.  
+# The basic thought is to give as few privileges as possible to a user while allowing  the user to accomplish a task. 
+# The term “Sudo” means substitute user, and do. It is a program used for managing of user permission based on a system configuration file. 
+# It allows users to run programs with the privileges of another user, by default, the superuser. 
+# The program is supplied for most UNIX and Linux-based operating systems.
+
 #Check if user sudoer on server(if no, output: User apache is not allowed to run sudo on v00graphictst.)
 sudo -l -U krasnosvarov_dn
+
+#sudoers with alias
+User_Alias ADMINS = user1, user2
+ADMINS ALL = NOPASSWD: ALL
+root ALL=(ALL) ALL
 
 #add user with sudo only in dir
 sudo useradd -s /bin/bash -d /opt/stack -m stack
