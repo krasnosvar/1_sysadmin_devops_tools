@@ -78,3 +78,8 @@ systemctl restart sssd ; sss_cache -E
 ```
  service oddjobd status
 ```
+
+
+SSSD Authentication with AD fails with a MEMORY:/etc/krb5.keytab error
+
+<!-- https://www.suse.com/support/kb/doc/?id=000020793 -->

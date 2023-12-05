@@ -35,3 +35,11 @@ Port 22
 # -N new_passphrase
 #              Provides the new passphrase.            
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
+
+
+
+
+# if error on ssh to server
+ssh user@192.168.1.7
+# Unable to negotiate with 192.168.1.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
+ssh -c aes128-ctr -o KexAlgorithms=+diffie-hellman-group1-sha1 user@192.168.1.7

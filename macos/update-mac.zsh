@@ -19,13 +19,7 @@ brew install oh-my-zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-brew install byobu
 
-brew install --cask visual-studio-code
-cat << EOF >> ~/.zprofile\
-# Add Visual Studio Code (code)\
-export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"\
-EOF
 
 brew install git
 git config --global user.email "krasnosvar@gmail.com"
@@ -42,6 +36,22 @@ brew install --cask audacity
 brew install --cask veracrypt
 brew install --cask vlc
 brew install gnu-sed
+#for VMs
+brew install qemu gcc libvirt
+brew install virt-manager
+
+#Utils
+brew install sevenzip
+brew install smartmontools
+brew install wget
+brew install expect
+brew install vault
+brew install watch
+brew install byobu
+
+#displaylink
+brew tap homebrew/cask-drivers
+brew install --cask displaylink
 
 #browsers
 brew install --cask vivaldi
@@ -51,18 +61,6 @@ brew install --cask microsoft-edge
 brew install --cask google-chrome
 brew install --cask tor-browser
 brew install --cask opera
-
-#Utils
-brew install sevenzip
-brew install smartmontools
-brew install wget
-brew install expect
-brew install vault
-brew install watch
-
-#displaylink
-brew tap homebrew/cask-drivers
-brew install --cask displaylink
 
 #netttols
 #https://medium.com/@edgar/use-openconnect-as-a-replacement-for-cisco-anyconnect-vpn-client-in-mac-36eab0812718
@@ -85,8 +83,6 @@ brew install --cask xquartz
 brew install quartz-wm
 
 
-
-
 #devops-tools
 brew install ansible
 brew install docker docker-compose terraform
@@ -102,13 +98,23 @@ brew install sops age
 #psql without postgres db
 brew install libpq
 echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.zshrc
+# install tofu - free terraform
+# https://opentofu.org/docs/intro/install/macos
+brew install opentofu
 
 
-#programming
+
+#programming, development
 brew install openjdk
 brew install golang
 brew install pip3
+# IDEs, editors
+brew install --cask visual-studio-code
+cat << EOF >> ~/.zprofile\
+# Add Visual Studio Code (code)\
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"\
+EOF
+# install VScodium - free vscode
+brew install --cask vscodium
 
-#for VMs
-brew install qemu gcc libvirt
-brew install virt-manager
+

@@ -1,7 +1,7 @@
 #useradd
 #create system user
 useradd -r tomcat --shell /bin/false
-#create user with: home dir, bash shell, and same group as name 
+#create user 'user' with: home dir, bash shell, and same group as name 
 useradd -mU user --shell /bin/bash
 
 #add user in "hand mode"
