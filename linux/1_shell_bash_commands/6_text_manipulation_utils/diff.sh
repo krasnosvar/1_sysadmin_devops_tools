@@ -1,3 +1,7 @@
+#diff output of two commands
+diff <(host 10.0.162.4) <(host 10.0.162.5)
+
+
 #Сравнить построчно
 #diff -y Dockerfile Dockerfile_test_diff 
 FROM alpine:latest                                              FROM alpine:latest

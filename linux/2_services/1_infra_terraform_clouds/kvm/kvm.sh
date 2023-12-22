@@ -144,6 +144,15 @@ sudo virsh attach-disk ubuntu-box1 /var/lib/libvirt/images/ubuntu-box1-vm-disk1-
 #resize image disk to 10G
 qemu-img resize images/focal-server-cloudimg-amd64-disk-kvm.img 10G
 
+#resize existing VM disk
+# https://computingforgeeks.com/how-to-extend-increase-kvm-virtual-machine-disk-size/
+sudo virsh -c qemu:///system domblklist dev1-u2004_111               
+sudo file /var/lib/libvirt/images/os_image.dev1-u2004_111          
+sudo qemu-img info /var/lib/libvirt/images/os_image.dev1-u2004_111
+sudo qemu-img resize /var/lib/libvirt/images/os_image.dev1-u2004_111 +10G
+
+
+
 #libvirt
 #virt-manager  -- GIU Virtual Machine Manager to manadge KVM 
 #virsh -- shell interface to manadge KVM

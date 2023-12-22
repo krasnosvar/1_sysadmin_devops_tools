@@ -45,7 +45,9 @@ sudo apt install flatpak -y
 #Virtualization
 #KVM
 sudo apt install -y qemu qemu-kvm libvirt-daemon libvirt-clients libvirt-dev bridge-utils virt-manager
-echo 'security_driver = "none"' >> /etc/libvirt/qemu.conf 
+echo 'security_driver = "none"' >> /etc/libvirt/qemu.conf
+#iostat, pidstat
+sudo apt install sysstat -y
 
 #Security
 sudo apt install keepassxc -y

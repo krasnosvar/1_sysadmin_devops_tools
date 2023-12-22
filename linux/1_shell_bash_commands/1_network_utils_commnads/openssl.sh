@@ -100,3 +100,8 @@ openssl passwd -crypt -salt XR SecretPassword
 
 
 
+#errors
+# update-ca-trust not adding certificates to ca-bundle
+https://access.redhat.com/solutions/3220561
+#check certs
+openssl crl2pkcs7 -nocrl -certfile /etc/pki/tls/certs/ca-bundle.crt | openssl pkcs7 -print_certs | grep subject | head

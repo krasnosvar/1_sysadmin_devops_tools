@@ -1,7 +1,16 @@
+#TOP command
+# alterantives - atop, htop
+
+#commands in running top screen
 #in running top:
 k #kill the process
 r #renice the process
-M #sorty by RAM usage
+M # sort by RAM usage
+T # sort by common CPU usage
+P # sort by now CPU usage
+u # show procecces by user
+f # chose other parameters to show
+? # commands statistics usage in top
 
 #show top for current user
 top -u $USER
