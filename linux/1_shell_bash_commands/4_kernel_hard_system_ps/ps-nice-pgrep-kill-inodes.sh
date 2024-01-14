@@ -1,5 +1,6 @@
 #убить процессы пользователя toor (например, для его удаления)
 ps aux | awk '/^toor/ {print $2}' | xargs kill -9
+pkill -u toor
 ---------------------------------------------------------------------------------------------
 
 
@@ -64,7 +65,7 @@ sudo renice -n -10 p 1310
 # renice created sleep to 15
 ( sleep 10000 & echo $! >&3 ) 3>pid | renice -n 15 -p $(<pid)
 
-#KILL
+#KILL PKILL
 #Sending Signals to Processes with kill, killall, and pkill
 # The signal SIGTERM (15) is used to ask a process to stop.
 # The signal SIGKILL (9) is used to force a process to stop.
@@ -72,6 +73,28 @@ sudo renice -n -10 p 1310
 kill "PID" #This sends the SIGTERM signal to the process, which normally causes the process to cease its activity
 kill -9 #sends the SIGKILL signal to the process. SIGKILL signal cannot be ignored, it forces the process to stop, but you also risk losing data while using this command
 kill -l #show a list of available signals that can be used with kill
+# - типов сигналов много ( kill- передать сигнал процессу)
+kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+# - Некоторые из наиболее часто используемых сигналов:
+1 HUP (hang up) — повесить.
+2 INT (interrupt) — прерывание.
+3 QUIT (quit) — выход.
+6 ABRT (abort) — прерывания.
+9 KILL (non-catchable, non-ignorable kill)
+14 ALRM (alarm clock) — будильник.
+15 TERM (software termination signal) — Программное обеспечение для прекращения сигнала.
+# - убить процесс:
+ps aux| grep java
+kill SIGKILL PID
+kill -9 8976
+# - убить процесс не по PID а по имени
+pkill java
+# - убить все процессы пользователя
+pkill -u nobody
+
 
 # How to get pid of just started process
 # https://serverfault.com/questions/205498/how-to-get-pid-of-just-started-process

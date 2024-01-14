@@ -105,3 +105,12 @@ openssl passwd -crypt -salt XR SecretPassword
 https://access.redhat.com/solutions/3220561
 #check certs
 openssl crl2pkcs7 -nocrl -certfile /etc/pki/tls/certs/ca-bundle.crt | openssl pkcs7 -print_certs | grep subject | head
+
+
+# keytool
+#delete cert fron truststore
+keytool -delete -alias "server.com (go daddy secure certificate authority - g2)" -keystore truststore.jks  -storepass changeit
+#list certs fron truststore
+keytool -list -v -keystore truststore.jks -storepass changeit
+#add cert fron truststore
+keytool -import -alias server.com -file server.crt -storetype JKS -keystore truststore.jks -storepass changeit

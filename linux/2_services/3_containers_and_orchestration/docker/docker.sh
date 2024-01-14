@@ -130,3 +130,11 @@ docker rm $(docker container ls -f status=exited -a -q)
 
 #remove all images which are not used by existing containers
 docker image prune -a -f
+
+# show memory usage
+docker run -d --name=nginx -p 8081:80 nginx
+docker stats --format "table {{.Name}}\t{{.MemUsage}}"
+NAME      MEM USAGE / LIMIT
+nginx     9.988MiB / 62.66GiB
+
+

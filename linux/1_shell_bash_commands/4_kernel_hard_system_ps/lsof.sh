@@ -19,11 +19,22 @@ echo > /proc/pid/fd/5u
 $ sudo kill -9 1623
 
 
+
+# lsof with files, witch using NETWORK
 #what PID uses port
+lsof -i
+# same, but quicklier, without name-resolv (-n no host names)
+lsof -i -n
+#or if we need only our ports opened( example web-server)
 sudo lsof -i -P -n | grep LISTEN
+# same but prettier with "lsof syntax" and only TCP
+sudo lsof -iTCP -sTCP:LISTEN
+# or files, connected to remote
+sudo lsof -i -P -n | grep ESTABLISHED
 #specific port
 sudo lsof -i:22
-
+# or with protocol type
+lsof -iTCP:80
 
 
 #TROUBLESHOOTING

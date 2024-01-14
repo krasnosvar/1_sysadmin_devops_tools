@@ -27,3 +27,11 @@ MemAvailable: 821.04 Mb
 SwapCached: 106.66 Mb
 SwapTotal: 3998.72 Mb
 SwapFree: 2359.55 Mb
+
+
+#awk show ips without ip ot ifconfig commands
+## Get the primary and secundary IPs
+awk '/\|--/ && !/\.0$|\.255$/ {print $2}' /proc/net/fib_trie
+
+## Get only the primary IPs
+awk '/32 host/ { print i } {i=$2}' /proc/net/fib_trie
