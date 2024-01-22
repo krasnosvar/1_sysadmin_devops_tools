@@ -16,3 +16,12 @@ du -shc --exclude=/{proc,sys,dev} /*
 du -shc 1_sysadmin_devops_tools/linux/* |sort -hr
 #sort by size( MAX on bottom)
 du -shc 1_sysadmin_devops_tools/linux/* |sort -h
+
+
+#INODES
+#check inodes usage
+df -i
+#https://www.digitalocean.com/community/questions/best-way-to-clear-inodes
+#check by dir
+for i in /*; do echo $i; find $i |wc -l; done
+for i in /var/*; do echo $i; find $i |wc -l; done

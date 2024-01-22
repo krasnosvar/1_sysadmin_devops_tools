@@ -10,6 +10,7 @@ lscpu|grep "Core(s)" && sudo parted -l| grep "Disk /" && sudo lshw -short | grep
 sudo lshw -short -C memory
 sudo dmidecode --type 17
 
+
 #show MB manufacturer and model
 sudo dmidecode -t 2
 

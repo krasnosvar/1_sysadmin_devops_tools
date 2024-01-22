@@ -1,7 +1,41 @@
+# all about linux procecces 
+# list commands here:
+ps
+pgrep
+pstree
+nice-renice
+kill
+pkill
+# Processes isolation:
+ulimit
+taskset
+cgroups
+
+
 #убить процессы пользователя toor (например, для его удаления)
 ps aux | awk '/^toor/ {print $2}' | xargs kill -9
 pkill -u toor
 ---------------------------------------------------------------------------------------------
+
+# удалили файл, открывший приложение. Как нам его восстановить?
+# https://habr.com/ru/articles/208104/
+# Файл лежит где лежал, пока он открыт хоть одним процессом. Как только все процессы закроют файл или завершатся, 
+# место на диске помечается как свободное и может быть перезаписано другим файлом.
+# 1. восстановить исполняемый файл( лежит по пути):
+sudo ls -lia /proc/526/exe 
+17961405 lrwxrwxrwx 1 root root 0 авг  6 00:10 /proc/526/exe -> /usr/sbin/rsyslogd
+# 2. Восстанавливаем файл, который открыт процессом:
+# у нас стоит приложение lsof и примонтирован procfs в /proc.
+# Первым делом нам нужно найти открытый файл с помощью программы lsof:
+$ sudo lsof | grep /home/anton/.xsession-errors
+kwin 2031 4002 anton 2w REG 253,3 4486557 1835028 /home/anton/.xsession-errors
+# Нас интересуют вот эти значения:
+# Номер процесса (pid) - 2031
+# Файловый дескриптор (file descriptor) - 2w
+# Дальше восстанавливаем его (вы можете также его сохранить в другом месте):
+sudo cp /proc/2031/fd/2 /home/anton/.xsession-error
+# 3. еще в теории можно создать хардлинк на файл и счетчик не будет равен 0 и файл не удалится
+
 
 
 #PS
@@ -100,14 +134,11 @@ pkill -u nobody
 # https://serverfault.com/questions/205498/how-to-get-pid-of-just-started-process
 go run main.go & echo $!
 
-#INODES
-#check inodes usage
-df -i
-#https://www.digitalocean.com/community/questions/best-way-to-clear-inodes
-#check by dir
-for i in /*; do echo $i; find $i |wc -l; done
-for i in /var/*; do echo $i; find $i |wc -l; done
 
+ulimit
+
+
+taskset
 #move process to another CPU core
 # * https://www.xmodulo.com/run-program-process-specific-cpu-cores-linux.html
 # https://www.redhat.com/sysadmin/tune-linux-tips
@@ -115,3 +146,6 @@ for i in /var/*; do echo $i; find $i |wc -l; done
 sudo apt install util-linux
 # create sleep in backgroud, fetch pid and move to CPU0 core
 ( sleep 10000 & echo $! >&3 ) 3>pid && taskset -cp 0 $(<pid)
+
+
+cgroups
