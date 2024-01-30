@@ -106,14 +106,6 @@ echo "Install PIPs"
 pip3 install ansible jq
 
 
-#install DEBs-from-web by ansible
-sudo ansible -m apt -a deb=https://apt.iteas.at/iteas/pool/main/o/openfortigui/openfortigui_0.9.8-1_amd64_jammy.deb localhost
-sudo ansible -m apt -a deb=https://linux.dropbox.com/ubuntu/pool/main/dropbox_2022.12.05_amd64.deb localhost
-sudo ansible -m apt -a deb=https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-2%2Bubuntu22.04_all.deb localhost
-# for keychron keyboard 
-sudo ansible -m apt -a deb=https://github.com/the-via/releases/releases/download/v3.0.0/via-3.0.0-linux.deb localhost
-
-
 #VScode extensions
 #https://stackoverflow.com/questions/34286515/how-to-install-visual-studio-code-extensions-from-command-line
 
