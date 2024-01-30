@@ -1,3 +1,0 @@
-#Beginner’s Guide To Hazelcast Part 1
-https://darylmathison.com/2014/04/01/beginners-guide-to-hazelcast-part-1/
-

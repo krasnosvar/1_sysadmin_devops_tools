@@ -9,7 +9,9 @@ systemctl list-unit-files
 systemctl list-units -t service
 systemctl --type=service
 service --status-all
-#
+#check service name by pid
+ps -ef | grep java
+systemctl status 88842
 #Как мне сделать так, чтобы сервис не запускался автоматически(примерб сервис cups.service)? 
 sudo systemctl disable cups
 #вернуть в автозагрузку

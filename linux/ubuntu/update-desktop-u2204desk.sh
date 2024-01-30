@@ -18,7 +18,7 @@ echo \
   $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # terraform
-file=terraform_1.4.0_linux_amd64.zip && wget https://hashicorp-releases.yandexcloud.net/terraform/1.4.0/$file && unzip $file && cp terraform /usr/bin/ && rm -rf $file 
+file=terraform_1.7.1_linux_amd64.zip && wget https://hashicorp-releases.yandexcloud.net/terraform/1.4.0/$file && unzip $file && cp terraform /usr/bin/ && rm -rf $file 
 
 apt update -y
 apt upgrade -y
@@ -91,7 +91,7 @@ sudo apt install ldap-utils -y
 sudo apt install openssh-server -y
 wget https://filestore.fortinet.com/forticlient/forticlient_vpn_7.0.7.0246_amd64.deb -P ~/Downloads
 sudo dpkg -i /home/den  /Downloads/forticlient_vpn_7.0.7.0246_amd64.deb
-sudo apt install -f
+sudo apt install arping -y
 #VPN-clients
 sudo apt install sshuttle openconnect network-manager-openconnect network-manager-openconnect-gnome openfortivpn -y
 
@@ -155,6 +155,12 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
     | sudo tee /etc/apt/sources.list.d/vscodium.list
 # install codium
 sudo apt update && sudo apt install -y codium
+# Migrating from VS Code to VS Codium on Linux
+# https://www.roboleary.net/tools/2022/06/13/migrate-from-vscode-to-vscodium-on-linux.html
+# copy everything
+cp -r $HOME/.config/Code/User/* $HOME/.config/VSCodium/User
+# copy extensions
+sudo cp -R ~/.vscode/extensions ~/.vscode-oss
 # install tofu - free terraform
 # https://opentofu.org/docs/intro/install/deb
 # gpg
@@ -181,7 +187,6 @@ pip3 install jmespath
 
 
 #install DEBs-from-web by ansible
-# ansible -m apt -a deb=https://apt.iteas.at/iteas/pool/main/o/openfortigui/openfortigui_0.9.3-1_amd64_focal.deb localhost
 sudo ansible -m apt -a deb=https://apt.iteas.at/iteas/pool/main/o/openfortigui/openfortigui_0.9.8-1_amd64_jammy.deb localhost
 sudo ansible -m apt -a deb=https://linux.dropbox.com/ubuntu/pool/main/dropbox_2022.12.05_amd64.deb localhost
 sudo ansible -m apt -a deb=https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-2%2Bubuntu22.04_all.deb localhost
@@ -205,7 +210,6 @@ sudo snap install remmina
 sudo snap install dbeaver-ce
 sudo snap install nmap
 # sudo snap install teams
-
 
 
 apt autoremove -y
