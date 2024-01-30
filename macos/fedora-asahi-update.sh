@@ -5,12 +5,12 @@ sudo dnf -y install dnf-plugins-core
 
 #Main OS apps
 #print screen program, добавить на клавишу printScr командой "flameshot gui"
-sudo dnf install flameshot
+sudo dnf install flameshot -y
 #sudo apt install copyq -y
-sudo dnf install copyq
+sudo dnf install copyq -y
 #Virtualization
 # https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
-sudo dnf install @virtualization
+sudo dnf install @virtualization -y
 sudo systemctl start libvirtd
 #iostat, pidstat
 # https://github.com/sysstat/sysstat
@@ -18,30 +18,29 @@ sudo dnf install sysstat -y
 
 #Security
 https://keepassxc.org/download/
-sudo dnf install keepassxc
+sudo dnf install keepassxc -y
 
 
 # Browsers
 #vivaldi
 # https://www.linuxcapable.com/install-vivaldi-on-fedora-linux/
 sudo dnf config-manager --add-repo https://repo.vivaldi.com/stable/vivaldi-fedora.repo
-sudo dnf install vivaldi-stable
+sudo dnf install vivaldi-stable -y
 #chrome
 # https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
-dnf install chromium
-sudo dnf install fedora-workstation-repositories
+sudo dnf install chromium -y
+sudo dnf install fedora-workstation-repositories -y
 sudo dnf config-manager --set-enabled google-chrome
-sudo dnf install google-chrome-stable
+sudo dnf install google-chrome-stable -y
 # brave
 # https://brave.com/linux/#fedora-rockyrhel
-sudo dnf install dnf-plugins-core
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-sudo dnf install brave-browser
+sudo dnf install brave-browser -y
 
 
 #nettools
-sudo dnf install wireshark
+sudo dnf install wireshark -y
 sudo usermod -a -G wireshark den
 
 
@@ -49,25 +48,25 @@ sudo usermod -a -G wireshark den
 # terraform
 file=terraform_1.7.1_linux_amd64.zip && wget https://hashicorp-releases.yandexcloud.net/terraform/1.4.0/$file && unzip $file && cp terraform /usr/bin/ && rm -rf $file 
 # https://httpie.io/docs/cli/fedora
-sudo dnf install httpie
+sudo dnf install httpie -y
 #docker
 # https://docs.docker.com/engine/install/fedora/#install-using-the-repository
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 #kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 #helm
-sudo dnf install helm
+sudo dnf install helm -y
 #terminal multiplexors
 sudo dnf install tmux byobu -y
 
 
 #programming, development
-sudo dnf install python3-pip
+sudo dnf install python3-pip -y
 #install go
 # https://developer.fedoraproject.org/tech/languages/go/go-installation.html
-sudo dnf install golang
+sudo dnf install golang -y
 #for java keytool
 dnf search openjdk
 # git
@@ -78,7 +77,7 @@ git config --global color.ui auto
 git config --global core.editor "vim"
 sudo dnf install vim neovim -y
 # install VScodium - free vscode
-sudo dnf install codium
+sudo dnf install codium -y
 # https://vscodium.com/#install
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
@@ -113,24 +112,6 @@ sudo ansible -m apt -a deb=https://linux.dropbox.com/ubuntu/pool/main/dropbox_20
 sudo ansible -m apt -a deb=https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-2%2Bubuntu22.04_all.deb localhost
 # for keychron keyboard 
 sudo ansible -m apt -a deb=https://github.com/the-via/releases/releases/download/v3.0.0/via-3.0.0-linux.deb localhost
-
-
-echo "Install SNAPs"
-#SNAPs
-sudo snap install vlc
-sudo snap install code --classic
-sudo snap install notepadqq
-sudo snap install gimp
-sudo snap install pycharm-community --classic
-sudo snap install postman
-sudo snap install telegram-desktop
-sudo snap install yq
-sudo snap install remmina
-# sudo snap install kubectl --classic
-# sudo snap install docker 
-sudo snap install dbeaver-ce
-sudo snap install nmap
-# sudo snap install teams
 
 
 #VScode extensions
