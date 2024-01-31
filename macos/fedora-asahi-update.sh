@@ -12,6 +12,7 @@ sudo dnf install copyq -y
 # https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
 sudo dnf install @virtualization -y
 sudo systemctl start libvirtd
+sudo usermod -a -G libvirt den
 #iostat, pidstat
 # https://github.com/sysstat/sysstat
 sudo dnf install sysstat -y
@@ -53,6 +54,7 @@ sudo dnf install httpie -y
 # https://docs.docker.com/engine/install/fedora/#install-using-the-repository
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo usermod -a -G docker den
 #kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
