@@ -6,8 +6,7 @@ sudo dnf -y install dnf-plugins-core
 #Main OS apps
 #print screen program, добавить на клавишу printScr командой "flameshot gui"
 sudo dnf install flameshot -y
-#sudo apt install copyq -y
-sudo dnf install copyq -y
+sudo dnf install audacity vlc -y
 #Virtualization
 # https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
 sudo dnf install @virtualization -y
