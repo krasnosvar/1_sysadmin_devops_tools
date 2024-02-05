@@ -95,7 +95,7 @@ sudo apt install arping -y
 #VPN-clients
 sudo apt install sshuttle openconnect network-manager-openconnect network-manager-openconnect-gnome openfortivpn -y
 
-#devops-tools
+#devops-tools ( containers)
 sudo apt install terraform-provider-libvirt -y
 sudo apt install httpie -y
 #docker
@@ -119,6 +119,19 @@ sudo ansible localhost -m apt -a deb=https://github.com/getsops/sops/releases/do
 helm plugin install https://github.com/jkroepke/helm-secrets --version v4.4.2 
 #terminal multiplexors
 sudo apt install python3-newt gawk pastebinit run-one tmux byobu -y
+#podman, podman-desktop
+# https://flatpak.org/setup/Ubuntu
+# https://podman-desktop.io/docs/installation/linux-install
+sudo apt install flatpak
+sudo apt-get -y install podman
+flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub io.podman_desktop.PodmanDesktop
+# rancher-desktop
+# https://docs.rancherdesktop.io/getting-started/installation/#linux
+curl -s https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/Release.key | gpg --dearmor | sudo dd status=none of=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg] https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/ ./' | sudo dd status=none of=/etc/apt/sources.list.d/isv-rancher-stable.list
+sudo apt update
+sudo apt install rancher-desktop -y
 
 
 #programming, development
@@ -330,3 +343,10 @@ cp ~/git_projects/.zshrc_linux ~/.zshrc
 
 chsh -s $(which zsh)
 which $SHELL
+
+
+#set background as solid color ( not photo)
+gsettings set org.gnome.desktop.background picture-uri ''
+gsettings set org.gnome.desktop.background picture-uri-dark ''
+gsettings reset org.gnome.desktop.background color-shading-type
+gsettings set org.gnome.desktop.background primary-color '#df2dd9'

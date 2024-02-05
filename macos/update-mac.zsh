@@ -1,3 +1,5 @@
+# backgroung colour Turquoise Green #30D5C8
+
 # sudo scutil --set HostName denAir
 
 #install brew

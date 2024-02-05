@@ -1,3 +1,5 @@
+# background colour #1d99f3
+
 #!/usr/bin/env bash
 sudo dnf upgrade --refresh
 sudo dnf -y install dnf-plugins-core
