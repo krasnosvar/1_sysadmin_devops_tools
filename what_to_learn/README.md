@@ -2,9 +2,10 @@
 ```
 https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/
 
-https://kodekloud.com/courses/certified-kubernetes-administrator-cka/
-
 https://roadmap.sh/kubernetes
+https://github.com/leandrocostam/cka-preparation-guide
+
+https://kodekloud.com/courses/certified-kubernetes-administrator-cka/
 
 Как сдать CKA в 2023 году, опыт Виктора Ведмича DKT48
 https://www.youtube.com/watch?v=h_Wm-tgsJ5I&t=3937s
