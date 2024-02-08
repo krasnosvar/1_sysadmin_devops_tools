@@ -8,25 +8,24 @@
 │   ├── 1_shell_bash_commands
 │   ├── 2_services
 │   ├── 3_progging_scripts_bash_go_python
-│   ├── alpine
-│   ├── ARM_virt
-│   ├── centos-rhel
-│   ├── fedora-coreos
-│   ├── oralce_linux
+│   ├── centos-rhel-fedora-coreos
 │   ├── README.md
 │   └── ubuntu
 ├── macos
 │   ├── commands.zsh
+│   ├── fedora-asahi-update.sh
 │   ├── fonts
 │   ├── qemu_libvirt
 │   ├── update-mac.zsh
 │   └── vscode
 ├── README.md
+├── what_to_learn
+│   └── README.md
 └── win10
     ├── choco.ps1
     └── powershell.sh
 
-15 directories, 6 files
+12 directories, 8 files
 ```
 
 2. Linux command examples( main shell commands like cp, grep, find etc.) ```linux/1_shell_bash_commands/```
@@ -35,7 +34,7 @@
 3. Scripts examples in ```linux/3_scripts/(shell(bash), ansible, python```
 
 
-4. Linux specific OS commands (Alpine,Centos, Ubuntu,) in main dir```linux```
+4. Linux specific OS commands (Fedora, Ubuntu,) in main dir```linux```
 * VMs creation examples with **terraform** in ```linux/2_services/1_infra_terraform_clouds/```
 
 5. Links:  

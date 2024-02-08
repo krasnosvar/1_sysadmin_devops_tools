@@ -1,3 +1,7 @@
+#config examples
+https://techexpert.tips/ru/nginx-ru/nginx-%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C-ssl-tls-1-0-%D0%B8-tls-1-1/
+
+
 https://github.com/insspb/nginx-config
 
 #print all modules

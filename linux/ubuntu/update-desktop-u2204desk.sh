@@ -77,6 +77,40 @@ sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://b
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|\
 sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update && sudo apt install brave-browser -y
+#firefox-based browsers ( waterfox, librefox, Floorp)
+#waterfox
+# https://www.linuxcapable.com/install-waterfox-browser-on-ubuntu-linux/
+curl -fsSL https://download.opensuse.org/repositories/home:hawkeye116477:waterfox/xUbuntu_22.04/Release.key |\
+ sudo gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_hawkeye116477_waterfox.gpg > /dev/null
+echo 'deb http://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' |\
+ sudo tee /etc/apt/sources.list.d/home:hawkeye116477:waterfox.list
+curl -fsSL https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_20.04/Release.key | sudo gpg --dearmor |\
+ sudo tee /etc/apt/trusted.gpg.d/home_hawkeye116477_waterfox.gpg > /dev/null
+echo 'deb http://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_20.04/ /' |\
+ sudo tee /etc/apt/sources.list.d/home:hawkeye116477:waterfox.list
+sudo apt update -y && sudo apt install waterfox-g-kpe -y
+#librewolf
+# https://librewolf.net/installation/debian/
+sudo apt update && sudo apt install -y wget gnupg lsb-release apt-transport-https ca-certificates
+distro=$(if echo " una bookworm vanessa focal jammy bullseye vera uma " |\
+ grep -q " $(lsb_release -sc) "; then lsb_release -sc; else echo focal; fi)
+wget -O- https://deb.librewolf.net/keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/librewolf.gpg
+sudo tee /etc/apt/sources.list.d/librewolf.sources << EOF > /dev/null
+Types: deb
+URIs: https://deb.librewolf.net
+Suites: $distro
+Components: main
+Architectures: amd64
+Signed-By: /usr/share/keyrings/librewolf.gpg
+EOF
+sudo apt update && sudo apt install librewolf -y
+#floorp
+# https://floorp.app/ru/download/
+curl -fsSL https://ppa.ablaze.one/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/Floorp.gpg
+sudo curl -sS --compressed -o /etc/apt/sources.list.d/Floorp.list 'https://ppa.ablaze.one/Floorp.list'
+sudo apt update && sudo apt install floorp -y
+
+
 
 #nettools
 sudo apt install wireshark -y
