@@ -31,11 +31,11 @@
 2. Linux command examples( main shell commands like cp, grep, find etc.) ```linux/1_shell_bash_commands/```
 
 
-3. Scripts examples in ```linux/3_scripts/(shell(bash), ansible, python```
+3. VMs creation examples with **terraform** in ```linux/2_services/1_infra_terraform_clouds/```
 
 
-4. Linux specific OS commands (Fedora, Ubuntu,) in main dir```linux```
-* VMs creation examples with **terraform** in ```linux/2_services/1_infra_terraform_clouds/```
+4. Scripts examples in ```3_progging_scripts_bash_go_python```
+
 
 5. Links:  
 
