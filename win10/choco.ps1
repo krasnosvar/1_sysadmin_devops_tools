@@ -1,22 +1,62 @@
 # powershell -executionpolicy bypass -File 'C:\Users\Den\Documents\choco.ps1'
-$Packages = 'googlechrome',
+$Packages = 'libreoffice',
+            'gimp',
+            'vlc',
+            'audacity',
+            'copyq',
+            'flameshot',
+            'rufus',
+            'telegram',          
+            'keepassxc',
+            'telegram',
+            'rocketchat',
+
+            'googlechrome',
             'vivaldi',
             'brave',
-            'rufus',
-            'gimp',
-            'telegram',
+            'firefox',
+            'librewolf',
+
             'forticlientvpn',
-            'keepassxc',
-            'libreoffice',
+            'openvpn-connect',
+            'openconnect-gui',
+            'wireshark',
+            'termius',
+            'winscp',
+            'putty',
+            'kitty',
+            'teraterm',
+
             'git',
-            'vscode',
-            'terraform',
-            'golang',
             'python3',
-            'ansible'
+            'golang',
+            'openjdk8',
+            'openjdk21',
+            'vscode',
+            'vscodium',
+            'neovim',
+            'pycharm-community',
+            'notepadplusplus',
+
+            'ansible',
+            'terraform',
+            'opentofu.portable',
+            'dbeaver-ce',
+            'httpie',
+            'curl',
+            'postman',
+
+            'docker-desktop',
+            'kubernetes-cli',
+            'podman-desktop',
+            'rancher-desktop',
+
+            'wsl-ubuntu-2204',
+            'wslgit',
+            'virtualbox',
+            'steam'
 
 
- 
 If(Test-Path -Path "$env:ProgramData\Chocolatey") {
   # DoYourPackageInstallStuff
   ForEach ($PackageName in $Packages)
