@@ -39,7 +39,6 @@ $Packages = 'libreoffice',
             'pycharm-community',
             'notepadplusplus',
 
-            'ansible',
             'terraform',
             'opentofu.portable',
             'dbeaver-ce',
