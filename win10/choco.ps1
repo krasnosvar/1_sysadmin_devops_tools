@@ -1,5 +1,7 @@
 # powershell -executionpolicy bypass -File 'C:\Users\Den\Documents\choco.ps1'
 $Packages = 'libreoffice',
+            'foxitreader',
+            'fbreader',
             'gimp',
             'vlc',
             'audacity',
