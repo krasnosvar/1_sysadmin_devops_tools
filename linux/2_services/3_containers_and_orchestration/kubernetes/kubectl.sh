@@ -90,6 +90,9 @@ kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key
 kubectl get configmaps my-config -o yaml
 #create from file
 kubectl create configmap game-config --from-file=myconfig
+#grep specific value from configmap ( from all CMs in all NS)
+kubectl get cm -o yaml --all-namespaces | grep "what_you_need"
+
 
 #SECRETS
 #create password as secret
