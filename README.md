@@ -14,10 +14,7 @@
 ├── macos
 │   ├── commands.zsh
 │   ├── fedora-asahi-update.sh
-│   ├── fonts
-│   ├── qemu_libvirt
 │   ├── update-mac.zsh
-│   └── vscode
 ├── README.md
 ├── what_to_learn
 │   └── README.md
@@ -29,15 +26,36 @@
 ```
 
 2. Linux command examples( main shell commands like cp, grep, find etc.) ```linux/1_shell_bash_commands/```
+```
+├── linux
+│   ├── 1_shell_bash_commands              - mainly-used shell commands ( and utils) like grep, ps, mkdir, etc.
+│   ├── 2_services                         - services like docker, ansible, k8s, terraform
+│   ├── 3_progging_scripts_bash_go_python  - script-examples on python, golang, bash
+│   ├── centos-rhel-fedora-coreos          - rhel os-specific workarounds
+│   ├── README.md                          - this file :)
+│   └── ubuntu                             - scripts for set-up desktop-ubuntu-os on first install
+```
 
 
-3. VMs creation examples with **terraform** in ```linux/2_services/1_infra_terraform_clouds/```
+3. macos
+
+```
+macos and fedora-asahi specific commands, scripts for set-up desktop-os on first install
+```
+
+4. win10
+```
+win10-11 powershell specific commands, scripts for set-up desktop-os on first install
+```
 
 
-4. Scripts examples in ```3_progging_scripts_bash_go_python```
+5. what_to_learn
+```
+list what to learn for sre-devops engineer
+```
 
 
-5. Links:  
+5. interesting Links:  
 
 [modern alternatives for Linux-commands](https://github.com/ibraheemdev/modern-unix)  
 [Kubernetes Roadmap](https://roadmap.sh/kubernetes)  
