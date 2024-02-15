@@ -1,3 +1,5 @@
+#background colour #038387
+
 #check ssd
 #https://tekcookie.com/ssd-health-with-powershell/
 Get-PhysicalDisk -DeviceNumber 0 | Get-StorageReliabilityCounter | Select DeviceId, Temperature, Wear
