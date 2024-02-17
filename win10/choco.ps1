@@ -51,8 +51,6 @@ $Packages = 'libreoffice',
             'podman-desktop',
             'rancher-desktop',
 
-            'wsl-ubuntu-2204',
-            'wslgit',
             'virtualbox',
             'steam'
 
