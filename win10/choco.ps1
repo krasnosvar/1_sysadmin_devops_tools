@@ -41,7 +41,7 @@ $Packages = 'libreoffice',
 
             'terraform',
             'opentofu.portable',
-            'dbeaver-ce',
+            'dbeaver',
             'httpie',
             'curl',
             'postman',
