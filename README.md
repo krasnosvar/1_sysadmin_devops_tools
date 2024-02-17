@@ -28,12 +28,12 @@
 2. Linux command examples( main shell commands like cp, grep, find etc.) ```linux/1_shell_bash_commands/```
 ```
 ├── linux
-│   ├── 1_shell_bash_commands              - mainly-used shell commands ( and utils) like grep, ps, mkdir, etc.
+│   ├── 1_shell_bash_commands              - mainly-used like grep, ps, mkdir, etc.
 │   ├── 2_services                         - services like docker, ansible, k8s, terraform
 │   ├── 3_progging_scripts_bash_go_python  - script-examples on python, golang, bash
 │   ├── centos-rhel-fedora-coreos          - rhel os-specific workarounds
 │   ├── README.md                          - this file :)
-│   └── ubuntu                             - scripts for set-up desktop-ubuntu-os on first install
+│   └── ubuntu                             - set-up ubuntu-os on first install
 ```
 
 ```
