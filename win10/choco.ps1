@@ -7,7 +7,8 @@ $Packages = 'libreoffice',
             'audacity',
             'copyq',
             'flameshot',
-            'rufus',         
+            'rufus',
+            'linux-reader',
             'keepassxc',
             'telegram',
             'rocketchat',
@@ -40,7 +41,7 @@ $Packages = 'libreoffice',
 
             'terraform',
             'opentofu.portable',
-            'dbeaver-ce',
+            'dbeaver',
             'httpie',
             'curl',
             'postman',
@@ -50,8 +51,6 @@ $Packages = 'libreoffice',
             'podman-desktop',
             'rancher-desktop',
 
-            'wsl-ubuntu-2204',
-            'wslgit',
             'virtualbox',
             'steam'
 
@@ -71,4 +70,7 @@ Else {
     {
         choco install $PackageName -y
     }
+  wsl --install -d Ubuntu-22.04
+  # enter  wsl vm:
+  # ubuntu2204
 }
