@@ -74,4 +74,7 @@ Else {
     {
         choco install $PackageName -y
     }
+  wsl --install -d Ubuntu-22.04
+  # enter  wsl vm:
+  # ubuntu2204
 }
