@@ -75,7 +75,7 @@ linux
 3. ```macos``` and fedora-asahi specific commands, scripts for set-up desktop-os on first install
 
 ```
-
+$ tree macos 
 macos
 ├── commands.zsh
 ├── fedora-asahi-update.sh
