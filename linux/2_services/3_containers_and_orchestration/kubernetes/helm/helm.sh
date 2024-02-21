@@ -1,3 +1,5 @@
+https://v2.helm.sh/docs/chart_template_guide/
+
 # universal cmd to install, upgrade and create namespace for repo if not exist
 helm upgrade local-chart  --install ./29_repo/ --namespace helm --create-namespace
 
