@@ -6,15 +6,14 @@ tree ./linux/ -L 2
 ./linux/
 ├── 1_shell_bash_commands
 │   ├── 0_oneliners.sh
-│   ├── 1_network_utils_commnads
+│   ├── 1_kernel_hard_system_ps
 │   ├── 2_disks_mount_lvm_nfs
 │   ├── 3_users_and_groups
-│   ├── 4_kernel_hard_system_ps
+│   ├── 4_network_utils_commnads
 │   ├── 5_packages_apt_yum_pip
 │   ├── 6_text_manipulation_utils
 │   ├── 7_files_folders_manupulation_utils
-│   ├── bash_completion.sh
-│   └── zsh.sh
+│   └── 8_sh_bash_zsh_scripting
 ├── 2_services
 │   ├── 1_infra_terraform_clouds
 │   ├── 2_config_management_ci-cd
@@ -27,25 +26,16 @@ tree ./linux/ -L 2
 │   ├── expect
 │   ├── git.sh
 │   ├── go
-│   ├── perl
 │   ├── python
 │   └── work_alias
-├── alpine
-│   └── alpine.sh
-├── ARM_virt
-│   └── arm_libvirt.sh
-├── centos-rhel
+├── centos-rhel-fedora-coreos
 │   ├── centos6.sh
 │   ├── centos7.sh
 │   ├── centos8.sh
 │   ├── centos.sh
+│   ├── fedora-coreos
+│   ├── oL.sh
 │   └── rhel7.sh
-├── fedora-coreos
-│   ├── coreos-libvirt-terraform
-│   ├── create_vm_by_bash_command
-│   └── pure_install_on_libvirt.sh
-├── oralce_linux
-│   └── oL.sh
 ├── README.md
 └── ubuntu
     ├── homefiles
@@ -54,5 +44,5 @@ tree ./linux/ -L 2
     ├── ubuntu.sh
     └── update-desktop-u2204desk.sh
 
-32 directories, 17 files
+27 directories, 12 files
 ```
