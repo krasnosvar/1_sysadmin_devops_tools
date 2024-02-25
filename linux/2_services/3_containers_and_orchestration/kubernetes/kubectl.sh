@@ -24,6 +24,12 @@ kubectl get all -n kube-system
 #show all containers in cluster
 #https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/#list-container-images-by-pod
 kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' |sort
+#execute commnad "date" on every pod in cluster
+for n in $(kubectl get ns| awk 'NR>1{print $1}'); \
+do for i in $(kubectl -n $n get po | grep Running| awk '{print $1}'); \
+do kubectl -n $n exec $i -- date; done; done 2>/dev/null
+#execute commnad "date" on every pod in SPECIFIC NAMESPACE in cluster
+nsc=test-ns; for i in $(kubectl -n $nsc get po | grep Running| awk '{print $1}'); do kubectl -n $nsc exec $i -- date; done
 
 
 #NAMESPACES
@@ -90,6 +96,9 @@ kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key
 kubectl get configmaps my-config -o yaml
 #create from file
 kubectl create configmap game-config --from-file=myconfig
+#grep specific value from configmap ( from all CMs in all NS)
+kubectl get cm -o yaml --all-namespaces | grep "what_you_need"
+
 
 #SECRETS
 #create password as secret

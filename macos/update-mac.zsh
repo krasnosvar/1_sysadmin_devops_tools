@@ -50,6 +50,7 @@ brew install expect
 brew install vault
 brew install watch
 brew install byobu
+brew install --cask termius
 
 #displaylink
 brew tap homebrew/cask-drivers
@@ -57,12 +58,18 @@ brew install --cask displaylink
 
 #browsers
 brew install --cask vivaldi
-brew install --cask firefox
 brew install --cask brave-browser
 brew install --cask microsoft-edge
 brew install --cask google-chrome
-brew install --cask tor-browser
 brew install --cask opera
+#firefox-based Gecko engine
+brew install --cask firefox
+brew install --cask waterfox
+brew install --cask floorp
+brew install --cask librewolf
+brew install --cask tor-browser
+#firefox-based Gecko engine (Goanna fork)
+# https://www.palemoon.org/download.php?mirror=us&bits=64&type=macarm
 
 #netttols
 #https://medium.com/@edgar/use-openconnect-as-a-replacement-for-cisco-anyconnect-vpn-client-in-mac-36eab0812718
