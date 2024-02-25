@@ -47,9 +47,9 @@ docker pull harbour.corp.domain.ru/dockerhub/krasnosvar-alpinsible2:latest
 
 #make archive from docker image
 #images list
-den@it-krasnosvarov:~$ sudo docker images
+$ sudo docker images
 REPOSITORY                                                  TAG                 IMAGE ID            CREATED             SIZE
-v00rpm-dr.corp.domain.ru/dockerhub/krasnosvar-alpinsible2   latest              62c74a251bed        7 days ago          158MB
+registry.domain.ru/dockerhub/krasnosvar-alpinsible2   latest              62c74a251bed        7 days ago          158MB
 #make
 sudo docker save --output alpinsible2.tar v00rpm-dr.corp.domain.ru/dockerhub/krasnosvar-alpinsible2
 #unpack archive

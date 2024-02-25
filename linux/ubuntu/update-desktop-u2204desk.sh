@@ -204,10 +204,37 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 sudo apt update && sudo apt install -y codium
 # Migrating from VS Code to VS Codium on Linux
 # https://www.roboleary.net/tools/2022/06/13/migrate-from-vscode-to-vscodium-on-linux.html
-# copy everything
-cp -r $HOME/.config/Code/User/* $HOME/.config/VSCodium/User
-# copy extensions
-sudo cp -R ~/.vscode/extensions ~/.vscode-oss
+#settings with powerline font for zsh
+cat <<EOF > $HOME/.config/VSCodium/User/settings.json                                                            
+{
+    "redhat.telemetry.enabled": false,
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.fontWeightBold": "bold",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "go.survey.prompt": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false
+}
+EOF                                                        
+#VScode extensions
+#https://stackoverflow.com/questions/34286515/how-to-install-visual-studio-code-extensions-from-command-line
+#-u den code --install-extension golang.go 
+sudo -u den codium --install-extension ms-python.python
+sudo -u den codium --install-extension ms-toolsai.jupyter
+sudo -u den codium --install-extension redhat.vscode-yaml
+sudo -u den codium --install-extension ms-azuretools.vscode-docker
+sudo -u den codium --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+# sudo -u den codium --install-extension redhat.vscode-openshift-extension-pack
+sudo -u den codium --install-extension redhat.java
+sudo -u den codium --install-extension eamodio.gitlens
+sudo -u den codium --install-extension gitlab.gitlab-workflow
+sudo -u den codium --install-extension hashicorp.terraform
+sudo -u den codium --install-extension davidanson.vscode-markdownlint
+sudo -u den codium --install-extension tomoki1207.pdf
+# https://github.com/oivron/microbit-extension-vscode
+sudo -u den codium --install-extension statped.microbit
 # install tofu - free terraform
 # https://opentofu.org/docs/intro/install/deb
 # gpg
@@ -221,6 +248,7 @@ deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg] https://packagecloud.io/opent
   sudo tee /etc/apt/sources.list.d/opentofu.list > /dev/null
 #  install tofu
 sudo apt-get update && sudo apt-get install -y tofu
+
 
 #PIPs
 echo "Install PIPs"
@@ -245,6 +273,11 @@ echo "Install SNAPs"
 #SNAPs
 sudo snap install vlc
 sudo snap install code --classic
+# copy settings and extensions from codium to vscode
+cp -r $HOME/.config/VSCodium/User/* $HOME/.config/Code/User
+# copy extensions
+sudo cp -R ~/.vscode-oss ~/.vscode/extensions
+#
 sudo snap install notepadqq
 sudo snap install gimp
 sudo snap install pycharm-community --classic
@@ -257,29 +290,8 @@ sudo snap install remmina
 sudo snap install dbeaver-ce
 sudo snap install nmap
 # sudo snap install teams
+sudo snap install fbreader
 
-
-apt autoremove -y
-
-
-#VScode extensions
-#https://stackoverflow.com/questions/34286515/how-to-install-visual-studio-code-extensions-from-command-line
-
-#-u den code --install-extension golang.go 
-sudo -u den code --install-extension ms-python.python
-sudo -u den code --install-extension ms-toolsai.jupyter
-sudo -u den code --install-extension redhat.vscode-yaml
-sudo -u den code --install-extension ms-azuretools.vscode-docker
-sudo -u den code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-# sudo -u den code --install-extension redhat.vscode-openshift-extension-pack
-sudo -u den code --install-extension redhat.java
-sudo -u den code --install-extension eamodio.gitlens
-sudo -u den code --install-extension gitlab.gitlab-workflow
-sudo -u den code --install-extension hashicorp.terraform
-sudo -u den code --install-extension davidanson.vscode-markdownlint
-sudo -u den code --install-extension tomoki1207.pdf
-# https://github.com/oivron/microbit-extension-vscode
-sudo -u den code --install-extension statped.microbit
 
 # wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-Ubuntu-20.10-amd64.deb
 # dkpg -i veracrypt-1.24-Update7-Ubuntu-20.10-amd64.deb
@@ -314,20 +326,20 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "autocmd VimEnter * NERDTree " start NERD automatically when vim opens
 EOF
-#instlal vundle plugins via cli
+#install vundle plugins via cli
 vim +PluginInstall +qall
 
 
 
 #config byobu
-mkdir -p /home/den/.byobu
-touch /home/den/.byobu/windows.tmux
-cat <<EOF > /home/den/.byobu/windows.tmux
-new-session bash ; 
-new-window htop ;
-new-window vim ;
-split-window ;
-EOF
+# mkdir -p /home/den/.byobu
+# touch /home/den/.byobu/windows.tmux
+# cat <<EOF > /home/den/.byobu/windows.tmux
+# new-session bash ; 
+# new-window htop ;
+# new-window vim ;
+# split-window ;
+# EOF
 
 
 chown -R den: /home/den
@@ -340,10 +352,6 @@ chown -R den: /home/den
 #apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2667CA5C
 #apt-get update
 # apt-get install seamonkey-mozilla-build
-
-
-sudo apt autoremove -y
-
 
 
 
@@ -384,3 +392,8 @@ gsettings set org.gnome.desktop.background picture-uri ''
 gsettings set org.gnome.desktop.background picture-uri-dark ''
 gsettings reset org.gnome.desktop.background color-shading-type
 gsettings set org.gnome.desktop.background primary-color '#df2dd9'
+
+
+sudo apt autoremove -y
+sudo snap refresh && snap list --all |\
+ awk '/disabled/{print $1, $3}' | while read name rev; do sudo snap remove "$name" --revision="$rev"; done
