@@ -69,7 +69,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 sudo dnf install helm -y
 #terminal multiplexors
 sudo dnf install tmux byobu -y
-sudo snap install dbeaver-ce
+flatpak install flathub io.dbeaver.DBeaverCommunity -y
 
 #programming, development
 sudo dnf install python3-pip -y
