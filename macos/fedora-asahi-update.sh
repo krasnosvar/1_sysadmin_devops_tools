@@ -14,9 +14,13 @@ sudo dnf install audacity vlc -y
 sudo dnf install @virtualization -y
 sudo systemctl start libvirtd
 sudo usermod -a -G libvirt den
+sudo usermod -a -G kvm den
 #iostat, pidstat
 # https://github.com/sysstat/sysstat
 sudo dnf install sysstat -y
+#snap
+sudo dnf install snapd -y
+
 
 #Security
 https://keepassxc.org/download/
@@ -39,7 +43,9 @@ sudo dnf install google-chrome-stable -y
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install brave-browser -y
-
+#floorp
+flatpak install flathub one.ablaze.floorp
+flatpak run one.ablaze.floorp
 
 #nettools
 sudo dnf install wireshark -y
@@ -63,7 +69,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 sudo dnf install helm -y
 #terminal multiplexors
 sudo dnf install tmux byobu -y
-
+sudo snap install dbeaver-ce
 
 #programming, development
 sudo dnf install python3-pip -y

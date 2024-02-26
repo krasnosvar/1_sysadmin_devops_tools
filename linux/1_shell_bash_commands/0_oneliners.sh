@@ -4,6 +4,14 @@
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo snap refresh \
 && snap list --all | awk '/disabled/{print $1, $3}' | while read name rev; do sudo snap remove "$name" --revision="$rev"; done
 
+#update fedore apps
+sudo dnf update -y && \
+&& sudo snap refresh \
+&& snap list --all | awk '/disabled/{print $1, $3}' |\
+ while read name rev; do sudo snap remove "$name" --revision="$rev"; done \
+&& flatpak update --force-remove -y
+
+
 #git
 git add . && git commit -m "add ldapsearch info" && git push
 #backup
