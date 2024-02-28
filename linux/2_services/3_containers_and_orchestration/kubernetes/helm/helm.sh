@@ -1,4 +1,13 @@
-https://v2.helm.sh/docs/chart_template_guide/
+# https://habr.com/ru/companies/otus/articles/790710/
+helm search hub — search all charts in Artifact Hub.
+helm search hub wordpress
+helm search repo — search in local repos(added by -  helm repo add).
+helm install <release name> <chart name>
+
+
+https://helm.sh/docs/chart_template_guide/getting_started/
+
+
 
 # universal cmd to install, upgrade and create namespace for repo if not exist
 helm upgrade local-chart  --install ./29_repo/ --namespace helm --create-namespace

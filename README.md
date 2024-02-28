@@ -114,3 +114,10 @@ list what to learn for sre-devops engineer
 [awesome-vscode](https://github.com/viatsko/awesome-vscode)  
 [awesome-mac](https://github.com/jaywcjlove/awesome-mac)  
 [awesome-docker](https://github.com/veggiemonk/awesome-docker)  
+\
+
+
+7. Main Linux or OpenSource organizations
+* https://www.linuxfoundation.org/about
+* https://opencontainers.org/about/overview/
+* https://www.cncf.io/about/who-we-are/
