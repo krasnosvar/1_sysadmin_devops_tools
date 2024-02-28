@@ -1,5 +1,4 @@
 # backgroung colour Turquoise Green #30D5C8
-
 # sudo scutil --set HostName denAir
 
 #install brew
@@ -64,7 +63,7 @@ brew install --cask google-chrome
 brew install --cask opera
 #firefox-based Gecko engine
 brew install --cask firefox
-brew install --cask waterfox
+# brew install --cask waterfox
 brew install --cask floorp
 brew install --cask librewolf
 brew install --cask tor-browser
@@ -102,7 +101,7 @@ brew install podman
 brew install --cask podman-desktop
 brew install --cask rancher
 brew install kubectl
-brew install helm
+brew install helm helmfile
 brew install sops age
 #psql without postgres db
 brew install libpq
@@ -125,5 +124,4 @@ export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/
 EOF
 # install VScodium - free vscode
 brew install --cask vscodium
-
-
+codium --install-extension ms-python.python
